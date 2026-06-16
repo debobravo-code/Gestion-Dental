@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 // Feign se conecta al stock-service en el puerto 8086
-@FeignClient(name = "stock-service", url = "http://localhost:8086")
+@FeignClient(name = "STOCK-SERVICE")
 public interface StockClient {
 
     // Llama a PATCH http://localhost:8086/api/stock/insumo/{insumoId}/cantidad?cantidad=X

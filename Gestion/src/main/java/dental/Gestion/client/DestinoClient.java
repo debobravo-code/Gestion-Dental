@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 // Feign se conecta al destino-service en el puerto 8083
 // Igual que InsumoClient pero apuntando al servicio de destinos
-@FeignClient(name = "destino-service", url = "http://localhost:8083")
+@FeignClient(name = "DESTINO-SERVICE")
 public interface DestinoClient {
 
     // Cuando llamo a este método, Feign hace GET http://localhost:8083/api/destinos/{id}

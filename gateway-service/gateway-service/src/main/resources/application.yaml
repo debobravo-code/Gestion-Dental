@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: insumo-service
+              uri: lb://INSUMO-SERVICE
+              predicates:
+                - Path=/api/insumos/**
+
+            - id: stock-service
+              uri: lb://STOCK-SERVICE
+              predicates:
+                - Path=/api/stock/**
+
+            - id: ingreso-service
+              uri: lb://INGRESO-SERVICE
+              predicates:
+                - Path=/api/ingresos/**
+
+            - id: egreso-service
+              uri: lb://EGRESO-SERVICE
+              predicates:
+                - Path=/api/egresos/**
+
+            - id: proveedor-service
+              uri: lb://PROVEEDOR-SERVICE
+              predicates:
+                - Path=/api/proveedores/**
+
+            - id: destino-service
+              uri: lb://DESTINO-SERVICE
+              predicates:
+                - Path=/api/destinos/**
+
+            - id: usuario-service
+              uri: lb://USUARIO-SERVICE
+              predicates:
+                - Path=/api/usuarios/**
+
+            - id: alerta-service
+              uri: lb://ALERTA-SERVICE
+              predicates:
+                - Path=/api/alertas/**
+
+            - id: reporte-service
+              uri: lb://REPORTE-SERVICE
+              predicates:
+                - Path=/api/reportes/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,15 @@
+package dental.ingreso_service.repository;
+
+import dental.ingreso_service.model.Ingreso;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface IngresoRepository extends JpaRepository<Ingreso, Integer> {
+
+    List<Ingreso> findByInsumoId(Integer insumoId);
+
+    List<Ingreso> findByProveedorId(Integer proveedorId);
+}

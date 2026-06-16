@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS destinos (
+    id_destino INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    tipo VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(500),
+    activo BOOLEAN NOT NULL DEFAULT TRUE
+);

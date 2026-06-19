@@ -37,13 +37,18 @@ public class StockController {
 
     @PostMapping
     public ResponseEntity<?> guardarStock(@Valid @RequestBody Stock stock) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(stockService.guardarStock(stock));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(stockService.guardarStock(stock));
     }
 
-    @PatchMapping("/insumo/{insumoId}/cantidad")
-    public ResponseEntity<?> actualizarCantidad(@PathVariable Integer insumoId,
-                                                  @RequestParam Integer cantidad) {
-        return ResponseEntity.ok(stockService.actualizarCantidad(insumoId, cantidad));
+    @PutMapping("/insumo/{insumoId}/cantidad")
+    public ResponseEntity<?> actualizarCantidad(
+            @PathVariable Integer insumoId,
+            @RequestParam Integer cantidad) {
+
+        return ResponseEntity.ok(
+                stockService.actualizarCantidad(insumoId, cantidad)
+        );
     }
 
     @DeleteMapping("/{id}")

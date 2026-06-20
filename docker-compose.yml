@@ -53,3 +53,15 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/insumo_db
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ""    
+  proveedor-service:
+    image: proveedor-service
+    container_name: proveedor-service
+    ports:
+      - "8082:8082"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/proveedor_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD:
+    depends_on:
+      - eureka-server    

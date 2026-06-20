@@ -65,7 +65,7 @@ services:
       SPRING_DATASOURCE_PASSWORD:
     depends_on:
       - eureka-server    
-        
+
   usuario-service:
     image: usuario-service
     container_name: usuario-service
@@ -74,6 +74,19 @@ services:
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/usuario_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD:
+    depends_on:
+      - eureka-server    
+
+  destino-service:
+    image: destino-service
+    container_name: destino-service
+    ports:
+      - "8083:8083"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/destino_db
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD:
     depends_on:

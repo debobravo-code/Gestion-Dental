@@ -91,3 +91,16 @@ services:
       SPRING_DATASOURCE_PASSWORD:
     depends_on:
       - eureka-server    
+
+  alerta-service:
+    image: alerta-service
+    container_name: alerta-service
+    ports:
+      - "8087:8087"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/alerta_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD:
+    depends_on:
+      - eureka-server

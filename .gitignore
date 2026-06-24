@@ -4,3 +4,6 @@ target/
 *.class
 *.log
 .env
+target/
+
+**/target/

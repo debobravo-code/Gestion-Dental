@@ -41,6 +41,20 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/ingreso_db
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ""
+
+  egreso-service:
+    image: egreso-service
+    container_name: egreso-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka-server
+      - stock-service
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/egreso_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""  
   insumo-service:
     image: insumo-service
     container_name: insumo-service

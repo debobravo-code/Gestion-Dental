@@ -1,16 +1,39 @@
-spring.application.name=egreso-service
+spring:
+  application:
+    name: egreso-service
 
-server.port=8084
+  profiles:
+    active: dev
 
-spring.profiles.active=dev
+  cloud:
+    compatibility-verifier:
+      enabled: false
 
-spring.cloud.compatibility-verifier.enabled=false
-spring.cloud.openfeign.client.config.default.connectTimeout=5000
-spring.cloud.openfeign.client.config.default.readTimeout=5000
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
 
-springdoc.api-docs.enabled=true
-springdoc.swagger-ui.enabled=true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
-spring.mvc.pathmatch.matching-strategy=ant_path_matcher
-eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
-eureka.instance.prefer-ip-address=true
+server:
+  port: 8084
+
+springdoc:
+  api-docs:
+    enabled: true
+
+  swagger-ui:
+    enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    prefer-ip-address: true

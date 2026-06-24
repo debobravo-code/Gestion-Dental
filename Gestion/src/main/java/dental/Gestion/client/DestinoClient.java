@@ -1,4 +1,4 @@
-package dental.Gestion.client;
+package dental.Gestion.client; // agregue un comntaro
 
 import dental.Gestion.dto.DestinoDTO;
 import org.springframework.cloud.openfeign.FeignClient;

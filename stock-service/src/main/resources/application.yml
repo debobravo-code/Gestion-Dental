@@ -2,10 +2,13 @@ spring:
   application:
     name: stock-service
 
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
   datasource:
-    url: jdbc:mysql://localhost:3306/stock_db
-    username: root
-    password:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/stock_db}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   cloud:
@@ -22,7 +25,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: ${SPRING_JPA_SHOW_SQL:true}
     properties:
       hibernate:
         format_sql: true
@@ -33,14 +36,13 @@ spring:
     locations: classpath:db/migration
 
 server:
-  port: 8086
+  port: ${PORT:8086}
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
 
   instance:
-    hostname: localhost
-    prefer-ip-address: false
+    prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
